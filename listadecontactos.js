@@ -1,55 +1,83 @@
 let contactos = [
   {
     id: 1,
-    nombre: "Angie Moreno Franco",
+    nombres: "Angie Yordana",
+    apellidos: "Moreno Franco",
     edad: 30,
     telefono: 3152229500,
     email: "aymorenof783230@gmail.com",
-    estudios: ["ingenieria agrícola", "idiomas", "desarrollo web"],
+    ubicacion: {
+      ciudad: "Medellin",
+      dirección: "Cra 58#56-15",
+    },
   },
   {
     id: 2,
-    nombre: "Felipe Vasquez Ocampo",
+    nombres: "Juan Felipe",
+    apellidos: "vasquez Ocampo",
     edad: 39,
     telefono: 3152226598,
     email: "felipevasquez@gmail.com",
-    estudios: [
-      "ingenieria de materiales",
-      "ingles",
-      "negocios internacionales",
-    ],
+    ubicacion: {
+      ciudad: "Medellin",
+      direccion: "clle 57#55-06",
+    },
   },
   {
     id: 3,
-    nombre: "Yorman Moreno Franco",
+    nombres: "Yorman",
+    apellidos: "Moreno Franco",
     edad: 25,
     telefono: 3165682466,
     email: "yormanm@gmail.com",
-    estudios: ["ingenieria en logistica", "ingles"],
+    ubicacion: {
+      ciudad: "Medellin",
+      direccion: "clle 5f#18-06",
+    },
   },
 ];
-function nuevoContacto(nuevo) {
-  let agregar = contactos.push({ nuevo });
-  console.log(contactos);
+function nuevoContacto(
+  id,
+  nombres,
+  apellidos,
+  edad,
+  telefono,
+  email,
+  ciudad,
+  direccion
+) {
+  let persona = {
+    id,
+    nombres,
+    apellidos,
+    edad,
+    telefono,
+    email,
+    ubicacion: {
+      ciudad,
+      direccion,
+    },
+  };
+  contactos.push(persona);
 }
-nuevoContacto({
-  id: 4,
-  nombre: "Carlos",
-  edad: 22,
-  telefono: 315624987,
-  email: "carlos@gmail.com",
-  estudios: "ninguno",
-});
+nuevoContacto(
+  4,
+  "Yan Carlos",
+  "Moreno Muñeton",
+  22,
+  3125689478,
+  "yan@gmail.com",
+  "Cali",
+  "clle 5f"
+);
+console.log(contactos);
 
 function eliminarContacto(id) {
-  contactos = contactos.filter((contacto) => contacto.id !== id);
-  console.log(contactos);
-}
-eliminarContacto(1);
-
-function contactosPresentes() {
-  for (let contacto of contactos) {
-    console.log(contacto);
+  for (let i = 0; i < contactos.length; i++) {
+    if (contactos[i].id === id) {
+      contactos.splice(i, 1);
+    }
   }
 }
-contactosPresentes();
+eliminarContacto(1);
+console.log(contactos);
